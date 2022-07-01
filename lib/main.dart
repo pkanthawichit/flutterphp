@@ -27,7 +27,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Flutter PHP",
+      title: "Flutter PHP by p.kanthawichit",
       home: MainPage(),
     );
   }
@@ -37,3 +37,4 @@ void main() {
   runApp(App());
 }
 // myapp
+//fist commot
