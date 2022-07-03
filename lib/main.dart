@@ -8,6 +8,8 @@ class AddItemPage extends StatefulWidget {
 }
 
 class AddItemPageState extends State<AddItemPage> {
+  createItem() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +18,13 @@ class AddItemPageState extends State<AddItemPage> {
       ),
       body: Column(
         children: <Widget>[
-          Text("hello"),
+          TextField(
+            decoration: InputDecoration(labelText: "Name"),
+          ),
+          RaisedButton(
+            onPressed: createItem,
+            child: Text("Create"),
+          ),
         ],
       ),
     );
