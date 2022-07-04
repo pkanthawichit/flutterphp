@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class AddItemPage extends StatefulWidget {
   @override
@@ -8,7 +11,20 @@ class AddItemPage extends StatefulWidget {
 }
 
 class AddItemPageState extends State<AddItemPage> {
-  createItem() {}
+  late TextEditingController nameController;
+  String response = "NULL";
+
+  get http => null;
+  createItem() async {
+    var dataStr = jsonEncode({
+      "name": nameController.text,
+    });
+    var url = "https//57ans.com/flutterphp/index.php" + dataStr;
+    var result = await http.get(url);
+    setState((
+      this.response = result.body;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +35,14 @@ class AddItemPageState extends State<AddItemPage> {
       body: Column(
         children: <Widget>[
           TextField(
+            controller: this.nameController,
             decoration: InputDecoration(labelText: "Name"),
           ),
           RaisedButton(
             onPressed: createItem,
             child: Text("Create"),
           ),
+          Text(this.response),
         ],
       ),
     );
