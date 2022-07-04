@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -16,14 +14,9 @@ class AddItemPageState extends State<AddItemPage> {
 
   get http => null;
   createItem() async {
-    var dataStr = jsonEncode({
-      "name": nameController.text,
-    });
-    var url = "https//57ans.com/flutterphp/index.php" + dataStr;
+    var url = "https://57ans.com/flutterphp/index.php";
     var result = await http.get(url);
-    setState((
-      this.response = result.body;
-    });
+    this.response = result.body;
   }
 
   @override
